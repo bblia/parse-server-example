@@ -1,0 +1,11 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "CV9LM3C838.tolzar.nailed-it",
+                "paths": [ "*"]
+            }
+        ]
+    }
+}
