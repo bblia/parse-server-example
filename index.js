@@ -45,6 +45,21 @@ app.get('/test', function(req, res) {
   res.sendFile(path.join(__dirname, '/public/test.html'));
 });
 
+app.get('/colors/:color', function(req, res) {
+  res.send(makeColorHtml(req.query.name, req.params.color));
+});
+
+function makeColorHtml(name, color) {
+  var name = name ? 'NailedIt: ' + name : 'Download this color in NailedIt';
+  if (color[0] === '#') {
+    color = color.substring(1);
+  }
+
+  var placeholderImageUrl = 'https://via.placeholder.com/500/' + color + '?text=%20'
+  return '<html><head><meta property="og:title" content="' + name + '" /> <meta property="og:image" content="' + placeholderImageUrl + '" /></head><body></body></html>';
+}
+
+
 var port = process.env.PORT || 1337;
 var httpServer = require('http').createServer(app);
 httpServer.listen(port, function() {
